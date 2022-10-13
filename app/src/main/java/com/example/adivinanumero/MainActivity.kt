@@ -36,15 +36,15 @@ class MainActivity : AppCompatActivity() {
 
 
 
+        binding.textView3.text=((binding.seekBar.progress)+1).toString()
+
         binding.btnBoton.setOnClickListener {
             secreto10=Random.nextInt(1-11)
             secreto50=Random.nextInt(1-51)
             secreto100=Random.nextInt(1-101)
             binding.txtMasOMenos.text=" "
         }
-        binding.seekBar.setOnClickListener(){
-            dificultad= binding.seekBar.progress
-        }
+
         binding.btnComprobar.setOnClickListener {
 
 
