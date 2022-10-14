@@ -37,7 +37,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="0"
+        android:text="1"
         android:textAlignment="center"
         android:textColor="#757575"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,17 +70,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.928" />
-
-    <TextView
-        android:id="@+id/txtMasOMenos"
-        android:layout_width="253dp"
-        android:layout_height="39dp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.596" />
 
     <CheckBox
         android:id="@+id/chkPistas"

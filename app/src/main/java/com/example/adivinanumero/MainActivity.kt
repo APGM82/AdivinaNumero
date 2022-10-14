@@ -2,21 +2,23 @@ package com.example.adivinanumero
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import com.example.adivinanumero.databinding.ActivityMainBinding
 import kotlin.random.Random
+import kotlin.random.nextInt
 
-var secreto10:Int=Random.nextInt(1-11)
-var secreto50:Int=Random.nextInt(1-51)
-var secreto100:Int=Random.nextInt(1-101)
-var dificultad:Int=1
+
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        var dificultad:Int=1
+        var adivinaFacil:Int=0
+        var adivinaMedia:Int=0
+        var adivinaDificil:Int=0
         binding.seekBar.progress=0
         binding.textView3.text="Fácil"
         binding.seekBar.setOnSeekBarChangeListener(object :
@@ -41,52 +43,55 @@ class MainActivity : AppCompatActivity() {
                     3 ->
                         binding.textView3.text="Dificil"
                 }
-                //dificultad=((binding.seekBar.progress)+1) //Esto al ponerlo me da error
+                dificultad=((binding.seekBar.progress)+1) //Esto al ponerlo me da error
+                Log.e("Antonio ",binding.seekBar.progress.toString())
             }
         })
-
+        dificultad=1
         binding.btnReiniciar.setOnClickListener {
-            secreto10=Random.nextInt(1-11)
-            secreto50=Random.nextInt(1-51)
-            secreto100=Random.nextInt(1-101)
-            binding.txtMasOMenos.text=" "
+
         }
 
         binding.btnComprobar.setOnClickListener {
-            if (dificultad == 1) {
-                if ((Integer.parseInt(binding.TextNumero.text.toString())<secreto10)){
-                    binding.txtMasOMenos.text="Mayor"
-                    binding.imageView.setImageResource(R.drawable.up)
-                } else if ((Integer.parseInt(binding.TextNumero.text.toString())>secreto10)){
-                    binding.txtMasOMenos.text="Menor"
-                    binding.imageView.setImageResource(R.drawable.down)
-                }else{
-                    binding.txtMasOMenos.text="Exacto"
-                    binding.imageView.setImageResource(R.drawable.win)
+            when (dificultad) {
+                1 -> {
+                    adivinaFacil=Random.nextInt(1-11)
+                    if ((Integer.parseInt(binding.TextNumero.text.toString())<adivinaFacil)){
+
+                        binding.imageView.setImageResource(R.drawable.up)
+                    } else if ((Integer.parseInt(binding.TextNumero.text.toString())>adivinaFacil)){
+
+                        binding.imageView.setImageResource(R.drawable.down)
+                    }else{
+
+                        binding.imageView.setImageResource(R.drawable.win)
+                    }
                 }
-            }
-            else if (dificultad == 2) {
-                if ((Integer.parseInt(binding.TextNumero.text.toString())<secreto50)){
-                    binding.txtMasOMenos.text="Mayor"
-                    binding.imageView.setImageResource(R.drawable.up)
-                } else if ((Integer.parseInt(binding.TextNumero.text.toString())>secreto50)){
-                    binding.txtMasOMenos.text="Menor"
-                    binding.imageView.setImageResource(R.drawable.down)
-                }else{
-                    binding.txtMasOMenos.text="Exacto"
-                    binding.imageView.setImageResource(R.drawable.win)
+                2 -> {
+                    adivinaMedia=Random.nextInt(1-51)
+                    if ((Integer.parseInt(binding.TextNumero.text.toString())<adivinaMedia)){
+
+                        binding.imageView.setImageResource(R.drawable.up)
+                    } else if ((Integer.parseInt(binding.TextNumero.text.toString())>adivinaMedia)){
+
+                        binding.imageView.setImageResource(R.drawable.down)
+                    }else{
+
+                        binding.imageView.setImageResource(R.drawable.win)
+                    }
                 }
-            }
-            else if (dificultad == 3) {
-                if ((Integer.parseInt(binding.TextNumero.text.toString())<secreto100)){
-                    binding.txtMasOMenos.text="Mayor"
-                    binding.imageView.setImageResource(R.drawable.up)
-                } else if ((Integer.parseInt(binding.TextNumero.text.toString())>secreto100)){
-                    binding.txtMasOMenos.text="Menor"
-                    binding.imageView.setImageResource(R.drawable.down)
-                }else{
-                    binding.txtMasOMenos.text="Exacto"
-                    binding.imageView.setImageResource(R.drawable.win)
+                3 -> {
+                    adivinaDificil=Random.nextInt(1-101)
+                    if ((Integer.parseInt(binding.TextNumero.text.toString())<adivinaDificil)){
+
+                        binding.imageView.setImageResource(R.drawable.up)
+                    } else if ((Integer.parseInt(binding.TextNumero.text.toString())>adivinaDificil)){
+
+                        binding.imageView.setImageResource(R.drawable.down)
+                    }else{
+
+                        binding.imageView.setImageResource(R.drawable.win)
+                    }
                 }
             }
         }
